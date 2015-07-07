@@ -1,8 +1,14 @@
 <?php
 
-class DataPengajianKota {
+namespace DPK\Controller;
+
+include_once( dirname(__DIR__) . '/controllers/Base.php' );
+use \DPK\Controller\Base;
+
+class DataPengajianKota extends Base {
 
     function __construct(){
+        parent::__construct();
         add_action( 'admin_menu', [$this, 'dpkAddMenu']);
     }
 
@@ -15,32 +21,17 @@ class DataPengajianKota {
             'Info Pengajian Kota',
             'read',
             'dpk-forkom',
-            [$this, 'dpkSetupTabs' ],
+            [$this, 'general' ],
             'dashicons-book-alt'
         );
     }
 
-    /**
-     * setup Tabs
-     * @param string $current
-     */
-    public function dpkSetupTabs($current = 'profile_pengajian_kota'){
-        $tabs = [
-            'profile_pengajian_kota'    => 'Profile Pengajian Kota',
-            'info_pengajian_kota'       => 'Info Pengajian Kota',
-            'contact_person'            => 'Contact Person'
-        ];
+    public function general(){
+        $updated = (isset($_GET['settings-updated'])) ? (bool) $_GET['settings-updated'] : false;
 
-        echo '<div class="left-area">';
-        echo '<div id="icon-themes" class="icon32"><br></div>';
-        echo '<h2 class="nav-tab-wrapper">';
-
-        foreach($tabs as $tab=>$name){
-            $class = ( $tab == $current ) ? ' nav-tab-active' : '';
-            echo "<a class='nav-tab$class' href='?page=dpk-forkom&tab=$tab'>$name</a>";
-        }
-
-        echo '</h2>';
+        $this->loadView('AdminPageView.php', array(
+            'updated' => $updated
+        ));
     }
 
     public function _install(){
