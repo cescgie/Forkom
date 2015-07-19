@@ -3,7 +3,6 @@
 namespace DPK\Controller;
 
 include_once( dirname(__DIR__) . '/controllers/Base.php' );
-use \DPK\Controller\Base;
 
 class DataPengajianKota extends Base {
 
@@ -42,6 +41,7 @@ class DataPengajianKota extends Base {
         $table_name = $wpdb->prefix . 'data_pengajian_kota';
         $sql = "CREATE TABLE IF NOT EXISTS $table_name(
                   `id_pengajian` int unsigned NOT NULL AUTO_INCREMENT,
+                  `user_login` VARCHAR(100) NOT NULL DEFAULT '',
                   `nama_pengajian` VARCHAR(100) NOT NULL DEFAULT '',
                   `kota_pengajian` VARCHAR(100) NOT NULL DEFAULT '',
                   `alamat_pengajian` VARCHAR(255) NOT NULL DEFAULT '',
