@@ -3,7 +3,7 @@
 include_once( dirname(__DIR__) . '/controllers/AdminPageController.php' );
 
 $controller = new \DPK\Controller\AdminPageController();
-
+if($controller->checkUserLogin('administrator')) echo "OKOK";
 if($_POST){
     echo "<pre>";
     var_dump($_POST);
@@ -23,7 +23,7 @@ if($_POST){
         <form name="forms" method="POST" action="">
             <?php
             $path = $controller->getPath('admin_page') . 'InfoPengajianKota.php';
-            if($tab == "cp_mediapublikasi"){
+            if($tab == 'cp_mediapublikasi'){
                 $path = $controller->getPath('admin_page') . 'ContactMediaPublikasi.php';
             }
             include_once($path);

@@ -26,7 +26,7 @@ class Connection {
 
     public static function delete(){}
 
-    public function getCurrentPengajianKota(){
+    public static function getCurrentPengajianKota(){
         global $current_user;
         get_currentuserinfo();
 

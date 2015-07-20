@@ -91,4 +91,23 @@ class Base
 
 		include($this->getPath('view').$file);
 	}
+
+	public function checkUserLogin($role){
+		global $current_user;
+		$isTrue = false;
+		get_currentuserinfo();
+
+		if($role == 'pengajian_kota'){
+			$arr = explode('_', $current_user->user_login);
+			if($arr[0] == 'pengajian'){
+				$isTrue = true;
+			}
+		} else if($role == 'administrator'){
+			if(in_array('administrator',$current_user->roles)){
+				$isTrue = true;
+			}
+		}
+
+		return $isTrue;
+	}
 }

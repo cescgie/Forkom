@@ -2,6 +2,7 @@
 
 namespace DPK\Controller;
 
+include_once( dirname(__DIR__) . '/models/Connection.php' );
 use DPK\Model\Connection;
 
 class AdminPageController extends Base{
@@ -15,11 +16,11 @@ class AdminPageController extends Base{
     }
 
     public function isPengajianExist(){
-
+        var_dump(Connection::getCurrentPengajianKota());
     }
 
     public function setupTabs($currTab){
-        $current = 'profile_pengajian_kota';
+        $current = 'info_pengajian_kota';
 
         $tabs = [
             'info_pengajian_kota'    => 'Informasi Pengajian Kota',

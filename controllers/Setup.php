@@ -15,14 +15,29 @@ class DataPengajianKota extends Base {
      * add menu 'Info Pengajian Kota' on wp-admin
      */
     public function dpkAddMenu(){
-        add_menu_page(
-            'Info Pengajian Kota',
-            'Info Pengajian Kota',
-            'read',
-            'dpk-forkom',
-            [$this, 'general' ],
-            'dashicons-book-alt'
-        );
+        if($this->checkUserLogin('pengajian_kota')){
+            add_menu_page(
+                'Info Pengajian Kota',
+                'Info Pengajian Kota',
+                'read',
+                'dpk-forkom',
+                [$this, 'general' ],
+                'dashicons-book-alt'
+            );
+        } else if($this->checkUserLogin('administrator')){
+            add_menu_page(
+                'Info Pengajian Kota',
+                'Info Pengajian Kota',
+                'read',
+                'dpk-forkom',
+                [$this, 'adminPage' ],
+                'dashicons-book-alt'
+            );
+        }
+    }
+
+    public function adminPage(){
+        echo "TODO: admin page view...";
     }
 
     public function general(){
