@@ -8,7 +8,7 @@ Version: 1.0
 Author URI: http://www.forkom-jerman.org
 */
 namespace DPK\Controller;
-include_once(__DIR__ . '/controllers/DataPengajianKota.php');
+include_once(__DIR__ . '/controllers/Setup.php');
 
 $dataPengajianKota = new DataPengajianKota();
 

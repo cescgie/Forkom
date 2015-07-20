@@ -10,7 +10,8 @@ class Base
 		'controller' => 'controllers',
 		'model'      => 'models',
 		'view'       => 'views',
-		'asset'      => 'assets'
+		'asset'      => 'assets',
+		'admin_page' => 'views/admin-page'
 	);
 
 	private $_paths = array();
