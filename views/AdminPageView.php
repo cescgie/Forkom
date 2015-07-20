@@ -3,15 +3,18 @@
 include_once( dirname(__DIR__) . '/controllers/AdminPageController.php' );
 
 $controller = new \DPK\Controller\AdminPageController();
-if($controller->checkUserLogin('administrator')) echo "OKOK";
+
 if($_POST){
-    echo "<pre>";
-    var_dump($_POST);
+    if($controller->isPengajianExist()){
+        $controller->putRequest($_POST);
+    } else{
+        $controller->postRequest($_POST);
+    }
 }
 ?>
 
 <div class="wrap">
-    <h2>Data Pengajian Kota</h2>
+    <h2>Data Pengajian <?php $explode = explode('_', $controller->getCurrentUser()); echo strtoupper($explode[1]);?></h2>
     <div class="left-area">
         <div id="icon-themes" class="icon32"><br></div>
         <h2 class="nav-tab-wrapper">

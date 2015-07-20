@@ -64,6 +64,7 @@ class DataPengajianKota extends Base {
                   `cp_email` VARCHAR(100) NOT NULL DEFAULT '',
                   `cp_tlpn` VARCHAR(100) NOT NULL DEFAULT '',
                   `kegiatan_pengajian` TEXT NOT NULL DEFAULT '',
+                  `nama_ustadz_kota` TEXT NOT NULL DEFAULT '',
                   `jumlah_jamaah_pengajian` TEXT NOT NULL DEFAULT '',
                   `website_pengajian` VARCHAR(100) NOT NULL DEFAULT '',
                   `facebook_group` VARCHAR(100) NOT NULL DEFAULT '',

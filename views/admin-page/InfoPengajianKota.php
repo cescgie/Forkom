@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td>Alamat Basecamp Pengajian</td>
-            <td>: <input type="text" name="alamat_pengaian"></td>
+            <td>: <input type="text" name="alamat_pengajian"></td>
         </tr>
     </table>
 </div>
