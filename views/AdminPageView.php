@@ -1,6 +1,7 @@
 <?php
 
 include_once( dirname(__DIR__) . '/controllers/AdminPageController.php' );
+include_once( dirname(__DIR__) . '/models/DPKEntity.php' );
 
 $controller = new \DPK\Controller\AdminPageController();
 
@@ -26,7 +27,7 @@ if($_POST){
         <form name="forms" method="POST" action="">
             <?php
             $path = $controller->getPath('admin_page') . 'InfoPengajianKota.php';
-            if($tab == 'cp_mediapublikasi'){
+            if($tab == \DPK\Model\DPKEntity::TAB_CP_MEDKOM){
                 $path = $controller->getPath('admin_page') . 'ContactMediaPublikasi.php';
             }
             include_once($path);

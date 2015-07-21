@@ -3,6 +3,9 @@
 namespace DPK\Controller;
 
 include_once( dirname(__DIR__) . '/controllers/Base.php' );
+include_once( dirname(__DIR__) . '/models/DPKEntity.php' );
+
+use DPK\Model\DPKEntity;
 
 class DataPengajianKota extends Base {
 
@@ -55,21 +58,21 @@ class DataPengajianKota extends Base {
 
         $table_name = $wpdb->prefix . 'data_pengajian_kota';
         $sql = "CREATE TABLE IF NOT EXISTS $table_name(
-                  `id_pengajian` int unsigned NOT NULL AUTO_INCREMENT,
-                  `user_login` VARCHAR(100) NOT NULL DEFAULT '',
-                  `nama_pengajian` VARCHAR(100) NOT NULL DEFAULT '',
-                  `kota_pengajian` VARCHAR(100) NOT NULL DEFAULT '',
-                  `alamat_pengajian` VARCHAR(255) NOT NULL DEFAULT '',
-                  `cp_nama_lengkap` VARCHAR(100) NOT NULL DEFAULT '',
-                  `cp_email` VARCHAR(100) NOT NULL DEFAULT '',
-                  `cp_tlpn` VARCHAR(100) NOT NULL DEFAULT '',
-                  `kegiatan_pengajian` TEXT NOT NULL DEFAULT '',
-                  `nama_ustadz_kota` TEXT NOT NULL DEFAULT '',
-                  `jumlah_jamaah_pengajian` TEXT NOT NULL DEFAULT '',
-                  `website_pengajian` VARCHAR(100) NOT NULL DEFAULT '',
-                  `facebook_group` VARCHAR(100) NOT NULL DEFAULT '',
-                  `twitter` VARCHAR(100) NOT NULL DEFAULT '',
-                  `youtube_channel` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::ID_PENGAJIAN ."` int unsigned NOT NULL AUTO_INCREMENT,
+                  `". DPKEntity::USER_LOGIN ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::NAMA_PENGAJIAN ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::KOTA_PENGAJIAN ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::ALAMAT_PENGAJIAN ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::KEGIATAN_PENGAJIAN ."` VARCHAR(255) NOT NULL DEFAULT '',
+                  `". DPKEntity::NAMA_USTADZ_KOTA ."` VARCHAR(255) NOT NULL DEFAULT '',
+                  `". DPKEntity::JUMLAH_JAMAAH_PENGAJIAN ."` VARCHAR(255) NOT NULL DEFAULT '',
+                  `". DPKEntity::CP_NAMA_LENGKAP ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::CP_EMAIL ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::CP_TLPN ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::URL_WEBSITE ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::URL_FACEBOOK_GROUP ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::URL_TWITTER ."` VARCHAR(100) NOT NULL DEFAULT '',
+                  `". DPKEntity::URL_YOUTUBE_CHANNEL ."` VARCHAR(100) NOT NULL DEFAULT '',
                   PRIMARY KEY (`id_pengajian`)
                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 

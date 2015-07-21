@@ -13,8 +13,16 @@ class Connection {
         return $wpdb->get_results($query);
     }
 
-    public static function update(){
+    public static function update($keysValues, $requirement){
+        global $wpdb;
+        $table = $wpdb->prefix . 'data_pengajian_kota';
 
+        $wpdb->update($table, $keysValues, $requirement);
+
+        if ( !empty($wpdb->error) ){
+            dead_db();
+            var_dump($wpdb->last_query );
+        }
     }
 
     public static function insert($keysValues){
