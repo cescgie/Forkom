@@ -14,10 +14,45 @@ class AdminPageController extends Base{
      * select all data from database
      * display to control forms
      */
-    public function getRequest(){
+    public function getRequest($currTab){
+        $arrData = [];
         if($this->isPengajianExist()){
-            Connection::select();
+            if($currTab == DPKEntity::TAB_CP_MEDKOM){
+                $select = DPKEntity::CP_NAMA_LENGKAP.', '.DPKEntity::CP_EMAIL.', '.DPKEntity::CP_TLPN.', '.
+                    DPKEntity::URL_WEBSITE.', '.DPKEntity::URL_FACEBOOK_GROUP.', '.DPKEntity::URL_TWITTER.', '.DPKEntity::URL_YOUTUBE_CHANNEL;
+            } else {
+                $select = DPKEntity::NAMA_PENGAJIAN.', '.DPKEntity::KOTA_PENGAJIAN.', '.DPKEntity::ALAMAT_PENGAJIAN.','.
+                    DPKEntity::KEGIATAN_PENGAJIAN.', '.DPKEntity::JUMLAH_JAMAAH_PENGAJIAN.', '.DPKEntity::NAMA_USTADZ_KOTA;
+            }
+            $results = Connection::select($select, DPKEntity::USER_LOGIN. "='". $this->getCurrentUser() ."'");
+
+            foreach($results[0] as $key=>$value){
+                if($key == DPKEntity::JUMLAH_JAMAAH_PENGAJIAN || $key == DPKEntity::NAMA_USTADZ_KOTA || $key == DPKEntity::KEGIATAN_PENGAJIAN){
+                    $explode = explode('__', $value);
+                    $tmpArr = [];
+
+                    for($i=0; $i<count($explode); $i++){
+                        if($explode[$i] != ""){
+                            $tmpArr = array_merge($tmpArr, [$key.'_'.($i+1) => $explode[$i]]);
+                        }
+                    }
+                    $arrData = array_merge($arrData, [$key => $tmpArr]);
+                } else {
+                    $arrData = array_merge($arrData, [$key => $value]);
+                }
+            }
+        } else {
+            if($currTab == DPKEntity::TAB_CP_MEDKOM){
+                $arrData = [DPKEntity::CP_NAMA_LENGKAP => '', DPKEntity::CP_EMAIL => '', DPKEntity::CP_TLPN => '',
+                            DPKEntity::URL_WEBSITE => '', DPKEntity::URL_FACEBOOK_GROUP => '',
+                            DPKEntity::URL_TWITTER => '', DPKEntity::URL_YOUTUBE_CHANNEL => ''];
+            } else {
+                $arrData = [DPKEntity::NAMA_PENGAJIAN => '', DPKEntity::KOTA_PENGAJIAN => '', DPKEntity::ALAMAT_PENGAJIAN => '',
+                    DPKEntity::KEGIATAN_PENGAJIAN => [''], DPKEntity::JUMLAH_JAMAAH_PENGAJIAN => [''],
+                    DPKEntity::NAMA_USTADZ_KOTA => ['']];
+            }
         }
+        return $arrData;
     }
 
     /**

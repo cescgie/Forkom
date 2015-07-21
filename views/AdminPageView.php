@@ -12,6 +12,8 @@ if($_POST){
         $controller->postRequest($_POST);
     }
 }
+
+$arrValues = $controller->getRequest($_GET['tab']);
 ?>
 
 <div class="wrap">
