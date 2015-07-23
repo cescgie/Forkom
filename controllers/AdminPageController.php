@@ -22,7 +22,8 @@ class AdminPageController extends Base{
                     DPKEntity::URL_WEBSITE.', '.DPKEntity::URL_FACEBOOK_GROUP.', '.DPKEntity::URL_TWITTER.', '.DPKEntity::URL_YOUTUBE_CHANNEL;
             } else {
                 $select = DPKEntity::NAMA_PENGAJIAN.', '.DPKEntity::KOTA_PENGAJIAN.', '.DPKEntity::ALAMAT_PENGAJIAN.','.
-                    DPKEntity::KEGIATAN_PENGAJIAN.', '.DPKEntity::JUMLAH_JAMAAH_PENGAJIAN.', '.DPKEntity::NAMA_USTADZ_KOTA;
+                    DPKEntity::PLZ_PENGAJIAN.', '.DPKEntity::KEGIATAN_PENGAJIAN.', '.
+                    DPKEntity::JUMLAH_JAMAAH_PENGAJIAN.', '.DPKEntity::NAMA_USTADZ_KOTA;
             }
             $results = Connection::select($select, DPKEntity::USER_LOGIN. "='". $this->getCurrentUser() ."'");
 
@@ -49,7 +50,7 @@ class AdminPageController extends Base{
             } else {
                 $arrData = [DPKEntity::NAMA_PENGAJIAN => '', DPKEntity::KOTA_PENGAJIAN => '', DPKEntity::ALAMAT_PENGAJIAN => '',
                     DPKEntity::KEGIATAN_PENGAJIAN => [''], DPKEntity::JUMLAH_JAMAAH_PENGAJIAN => [''],
-                    DPKEntity::NAMA_USTADZ_KOTA => ['']];
+                    DPKEntity::NAMA_USTADZ_KOTA => [''], DPKEntity::PLZ_PENGAJIAN => ''];
             }
         }
         return $arrData;

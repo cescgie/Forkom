@@ -7,17 +7,19 @@ include_once( dirname(__DIR__) . '/../models/DPKEntity.php' );
         <tr>
             <td>Nama Pengajian Kota</td>
             <td>: <input type="text" name="<?php echo \DPK\Model\DPKEntity::NAMA_PENGAJIAN?>"
-                         value="<?= $arrValues[\DPK\Model\DPKEntity::NAMA_PENGAJIAN];?>"></td>
-        </tr>
-        <tr>
-            <td>Kota Pengajian Kota</td>
-            <td>: <input type="text" name="<?php echo \DPK\Model\DPKEntity::KOTA_PENGAJIAN?>"
-                         value="<?= $arrValues[\DPK\Model\DPKEntity::KOTA_PENGAJIAN];?>"></td>
+                         value="<?= $arrValues[\DPK\Model\DPKEntity::NAMA_PENGAJIAN];?>" placeholder="Nama Pengajian"></td>
         </tr>
         <tr>
             <td>Alamat Basecamp Pengajian</td>
             <td>: <input type="text" name="<?php echo \DPK\Model\DPKEntity::ALAMAT_PENGAJIAN?>"
-                         value="<?= $arrValues[\DPK\Model\DPKEntity::ALAMAT_PENGAJIAN];?>"></td>
+                         value="<?= $arrValues[\DPK\Model\DPKEntity::ALAMAT_PENGAJIAN];?>" placeholder="Alamat"></td>
+        </tr>
+        <tr>
+            <td>PLZ/Kota Pengajian Kota</td>
+            <td>: <input type="text" name="<?php echo \DPK\Model\DPKEntity::PLZ_PENGAJIAN?>"
+                         value="<?= $arrValues[\DPK\Model\DPKEntity::PLZ_PENGAJIAN];?>" placeholder="PLZ"></td>
+            <td>/ <input type="text" name="<?php echo \DPK\Model\DPKEntity::KOTA_PENGAJIAN?>"
+                         value="<?= $arrValues[\DPK\Model\DPKEntity::KOTA_PENGAJIAN];?>" placeholder="Kota"></td>
         </tr>
     </table>
 </div>
@@ -34,7 +36,8 @@ include_once( dirname(__DIR__) . '/../models/DPKEntity.php' );
         <tr>
             <td>Kegiatan <?= $indexKegiatan;?></td>
             <td>
-                <input type="text" name="<?= \DPK\Model\DPKEntity::KEGIATAN_PENGAJIAN.'_'.$indexKegiatan;?>" value="<?= $value;?>">
+                <input type="text" name="<?= \DPK\Model\DPKEntity::KEGIATAN_PENGAJIAN.'_'.$indexKegiatan;?>"
+                       value="<?= $value;?>" placeholder="Kegiatan <?=$indexKegiatan?>">
                 <?php if($indexKegiatan > 1) echo '<a href="#" class="remove_field">Remove</a>';?>
             </td>
         </tr>
@@ -84,7 +87,8 @@ include_once( dirname(__DIR__) . '/../models/DPKEntity.php' );
             <tr>
                 <td>Nama Ustadz <?= $indexUstadz?></td>
                 <td>
-                    <input type="text" name="<?= \DPK\Model\DPKEntity::NAMA_USTADZ_KOTA.'_'.$indexUstadz?>" value="<?= $value;?>">
+                    <input type="text" name="<?= \DPK\Model\DPKEntity::NAMA_USTADZ_KOTA.'_'.$indexUstadz?>"
+                           value="<?= $value;?>" placeholder="Nama Ustadz <?=$indexUstadz?>">
                     <?php if($indexUstadz > 1) echo '<a href="#" class="remove_field">Remove</a>';?>
                 </td>
             </tr>
@@ -102,7 +106,7 @@ include_once( dirname(__DIR__) . '/../models/DPKEntity.php' );
             $($btn).click(function(e){
                 e.preventDefault();
                 $($wrapper).append('<tr><td>'+$label+' '+ i +'</td><td><input type="text" name="'+ $key
-                    +i+'"/><a href="#" class="remove_field">Remove</a></td></tr>');
+                    +i+'"placeholder="'+$label+' '+i+'"/><a href="#" class="remove_field">Remove</a></td></tr>');
                 i++;
             });
 
