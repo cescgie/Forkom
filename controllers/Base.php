@@ -24,7 +24,7 @@ class Base
 		'controller' => 'controllers',
 		'model'      => 'models',
 		'view'       => 'views',
-		'asset'      => 'assets',
+		'asset'      => 'asset',
 		'admin_page' => 'views/admin-page'
 	);
 

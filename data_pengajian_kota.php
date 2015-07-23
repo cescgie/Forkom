@@ -10,7 +10,7 @@ Author URI: http://www.forkom-jerman.org
 namespace DPK\Controller;
 include_once(__DIR__ . '/controllers/Setup.php');
 
-$dataPengajianKota = new DataPengajianKota();
+$dataPengajianKota = new Setup();
 
 register_activation_hook(__FILE__, [&$dataPengajianKota, '_install']);
 register_deactivation_hook(__FILE__, [&$dataPengajianKota, '_uninstall']);

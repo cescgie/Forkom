@@ -7,11 +7,18 @@ include_once( dirname(__DIR__) . '/models/DPKEntity.php' );
 
 use DPK\Model\DPKEntity;
 
-class DataPengajianKota extends Base {
+class Setup extends Base {
 
     function __construct(){
         parent::__construct();
         add_action( 'admin_menu', [$this, 'dpkAddMenu']);
+        add_shortcode( 'testaa', [$this, 'testView'] );
+        wp_register_style( 'tests', $this->getUrl('asset').'/css/styles.css' );
+        wp_enqueue_style( 'tests' );
+
+
+        wp_register_script( 'testsjs', $this->getUrl('asset').'/js/js.js' ,array(), '1.0.0', true );
+        wp_enqueue_script( 'testsjs' );
     }
 
     /**
@@ -24,7 +31,7 @@ class DataPengajianKota extends Base {
                 'Info Pengajian Kota',
                 'read',
                 'dpk-forkom',
-                [$this, 'general' ],
+                [$this, 'loadCPPengajianView' ],
                 'dashicons-book-alt'
             );
         } else if($this->checkUserLogin('administrator')){
@@ -43,12 +50,16 @@ class DataPengajianKota extends Base {
         echo "TODO: admin page view...";
     }
 
-    public function general(){
+    public function loadCPPengajianView(){
         $updated = (isset($_GET['settings-updated'])) ? (bool) $_GET['settings-updated'] : false;
 
         $this->loadView('AdminPageView.php', array(
             'updated' => $updated
         ));
+    }
+
+    public function loadFrontenView(){
+
     }
 
     public function _install(){
