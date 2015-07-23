@@ -13,7 +13,12 @@ class Setup extends Base {
     function __construct(){
         parent::__construct();
         add_action( 'admin_menu', [$this, 'dpkAddMenu']);
-        add_shortcode( 'testaa', [$this, 'testView'] );
+
+        // register frontend shortcode
+        $frontendController = new FrontendPageController();
+        $frontendController->registerCss();
+        $frontendController->registerScript();
+        add_shortcode( 'datapengajiankota', [$frontendController, 'loadFrontendView'] );
     }
 
     public function dpkAddMenu(){
@@ -38,10 +43,6 @@ class Setup extends Base {
                 'dashicons-book-alt'
             );
         }
-    }
-
-    private function loadFrontenView(){
-
     }
 
     public function _install(){
