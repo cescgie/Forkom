@@ -9,8 +9,9 @@ class DPKEntity
     const ID_PENGAJIAN              = 'id_pengajian';
     const USER_LOGIN                = 'user_login';
     const NAMA_PENGAJIAN            = 'nama_pengajian';
-    const KOTA_PENGAJIAN            = 'kota_pengajian';
     const ALAMAT_PENGAJIAN          = 'alamat_pengajian';
+    const PLZ_PENGAJIAN             = 'plz_pengajian';
+    const KOTA_PENGAJIAN            = 'kota_pengajian';
     const KEGIATAN_PENGAJIAN        = 'kegiatan_pengajian';
     const NAMA_USTADZ_KOTA          = 'nama_ustadz_kota';
     const JUMLAH_JAMAAH_PENGAJIAN   = 'jumlah_jamaah_pengajian';
