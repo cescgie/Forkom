@@ -10,6 +10,18 @@ use DPK\Model\DPKEntity;
 
 class AdminPageController extends Base{
 
+    public function loadAdministratorPage(){
+        echo "TODO: admin page view...";
+    }
+
+    public function loadCPPengajianView(){
+        $updated = (isset($_GET['settings-updated'])) ? (bool) $_GET['settings-updated'] : false;
+
+        $this->loadView('AdminPageView.php', array(
+            'updated' => $updated
+        ));
+    }
+
     /**
      * select all data from database
      * display to control forms
