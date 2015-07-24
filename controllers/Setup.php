@@ -4,6 +4,7 @@ namespace DPK\Controller;
 
 include_once( dirname(__DIR__) . '/controllers/Base.php' );
 include_once( dirname(__DIR__) . '/controllers/AdminPageController.php' );
+include_once( dirname(__DIR__) . '/controllers/FrontendPageController.php' );
 include_once( dirname(__DIR__) . '/models/DPKEntity.php' );
 
 use DPK\Model\DPKEntity;
