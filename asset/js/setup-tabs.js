@@ -1,5 +1,4 @@
 
-
 jQuery(document).ready(function($) {
     var $tabs = $('#horizontalTab');
     $tabs.responsiveTabs({

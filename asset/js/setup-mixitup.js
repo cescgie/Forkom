@@ -1,5 +1,4 @@
 
-
 jQuery(document).ready(function($) {
 
     $(".dpk-container").mixItUp();
@@ -29,11 +28,11 @@ jQuery(document).ready(function($) {
                         $matching = $matching.not(this);
                     }
                 });
-                $(".dpk-container").mixItUp('dpk-filter', $matching);
+                $(".dpk-container").mixItUp('filter', $matching);
             }
 
             else {
-                $(".dpk-container").mixItUp('dpk-filter', 'all');
+                $(".dpk-container").mixItUp('filter', 'all');
             }
         }, 200 );
     });

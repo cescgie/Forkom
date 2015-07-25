@@ -1,171 +1,171 @@
 
-jQuery(document).ready(function($) {
-    var DPKPOPUP = (function(window, undefined) {
-        'use strict';
-        /**
-         * Modal constructor.
-         * @constructor
-         * @param {Object} options
-         * @returns: {Object} this with public methods
-         */
-        function DPKPOPUP(options) {
-            this.init(options);
 
-            return this;
-        }
+var DPKPOPUP = (function(window, undefined) {
+    'use strict';
+    /**
+     * Modal constructor.
+     * @constructor
+     * @param {Object} options
+     * @returns: {Object} this with public methods
+     */
+    function DPKPOPUP(options) {
+        this.init(options);
 
-        /**
-         * @public: inits application.
-         * @param: {Object} options
-         */
-        DPKPOPUP.prototype.init = function(options) {
-            var defaults = {
-                selector: '[display-detail]',
-                modalSelector: '.dpk-popup-modal',
-                closeSelector: '.dpk-popup-modal-close',
-                showModalClassName: 'dpk-popup-modal-is-open',
-                showOverlay: true
-            };
-            var self = this;
+        return this;
+    }
 
-            /**
-             * {Object} settings - stores global options
-             */
-            this.settings = extend(defaults, options);
-
-            /**
-             * {Array} of modal wrapper elements
-             */
-            this.modalElements = docQSA(this.settings.modalSelector);
-
-            /**
-             * {Array} of modal trigger elements
-             */
-            this.triggers = docQSA(this.settings.selector);
-
-            /**
-             * Checks if overlay option is enabled.
-             */
-            if (this.settings.showOverlay) {
-                setupOverlay(function() {
-                    /**
-                     * {Object} modal overlay element
-                     */
-                    self.overlayElement = docQS('.dpk-popup-modal-overlay');
-                });
-            }
+    /**
+     * @public: inits application.
+     * @param: {Object} options
+     */
+    DPKPOPUP.prototype.init = function(options) {
+        var defaults = {
+            selector: '[display-detail]',
+            modalSelector: '.dpk-popup-modal',
+            closeSelector: '.dpk-popup-modal-close',
+            showModalClassName: 'dpk-popup-modal-is-open',
+            showOverlay: true
         };
+        var self = this;
 
         /**
-         * Closes modal.
-         *
-         * @public: closes modal
-         * @param: {Object} targetElement
+         * {Object} settings - stores global options
          */
-        DPKPOPUP.prototype.close = function(targetElement) {
-            targetElement.classList.remove(this.settings.showModalClassName);
-
-            if (this.settings.showOverlay) {
-                this.overlayElement.classList.remove('is-shown');
-            }
-        };
+        this.settings = extend(defaults, options);
 
         /**
-         * @public: opens modal
-         * @param: {Object} targetElement
+         * {Array} of modal wrapper elements
          */
-        DPKPOPUP.prototype.open = function(targetElement) {
-            this.closeShownModal();
-
-            targetElement.classList.add(this.settings.showModalClassName);
-
-            if (this.settings.showOverlay) {
-                this.overlayElement.classList.add('is-shown');
-            }
-        };
+        this.modalElements = docQSA(this.settings.modalSelector);
 
         /**
-         * @public: loops through list of triggers and fires a callback
-         * @returns: callback
+         * {Array} of modal trigger elements
          */
-        DPKPOPUP.prototype.each = function(callback) {
-            var array = [];
-            array.forEach.call(this.triggers, function(element) {
-                if (typeof callback === 'function') {
-                    callback(element);
-                }
+        this.triggers = docQSA(this.settings.selector);
+
+        /**
+         * Checks if overlay option is enabled.
+         */
+        if (this.settings.showOverlay) {
+            setupOverlay(function() {
+                /**
+                 * {Object} modal overlay element
+                 */
+                self.overlayElement = docQS('.dpk-popup-modal-overlay');
             });
         }
+    };
 
-        /**
-         * @public: closes modal if any is shown
-         */
-        DPKPOPUP.prototype.closeShownModal = function() {
-            var array = [];
-            var showModalClassName = this.settings.showModalClassName;
-            array.forEach.call(this.modalElements, function(element) {
-                if (element.classList.contains(showModalClassName)) {
-                    element.classList.remove(showModalClassName);
-                    return;
-                }
-            });
+    /**
+     * Closes modal.
+     *
+     * @public: closes modal
+     * @param: {Object} targetElement
+     */
+    DPKPOPUP.prototype.close = function(targetElement) {
+        targetElement.classList.remove(this.settings.showModalClassName);
+
+        if (this.settings.showOverlay) {
+            this.overlayElement.classList.remove('is-shown');
         }
+    };
 
-        /**
-         * @private: short version of querySelectorAll
-         * @param: {string} selector - css-like
-         * @returns: {Array|NodeList} selector list
-         */
-        function docQSA(selector) {
-            return document.querySelectorAll(selector);
+    /**
+     * @public: opens modal
+     * @param: {Object} targetElement
+     */
+    DPKPOPUP.prototype.open = function(targetElement) {
+        this.closeShownModal();
+
+        targetElement.classList.add(this.settings.showModalClassName);
+
+        if (this.settings.showOverlay) {
+            this.overlayElement.classList.add('is-shown');
         }
+    };
 
-        /**
-         * @private: short version of querySelector
-         * @param: css-like selector
-         * @returns: {Object} first DOM selector
-         */
-        function docQS(selector) {
-            return document.querySelector(selector);
-        }
-
-        /**
-         * @private: merge defaults with user options
-         * @param: defaults settings and user options
-         * @returns: merged values of defaults and options
-         */
-        function extend(defaults, options) {
-            var extended = {};
-            var prop;
-            for (prop in defaults) {
-                if (Object.prototype.hasOwnProperty.call(defaults, prop)) {
-                    extended[prop] = defaults[prop];
-                }
-            }
-            for (prop in options) {
-                if (Object.prototype.hasOwnProperty.call(options, prop)) {
-                    extended[prop] = options[prop];
-                }
-            }
-            return extended;
-        }
-
-        /**
-         * @private: creates overlay element
-         * @param: callback - on finish
-         * @returns: callback
-         */
-        function setupOverlay(callback) {
-            var div = document.createElement('div');
-            div.classList.add('dpk-popup-modal-overlay');
-            docQS('body').appendChild(div);
+    /**
+     * @public: loops through list of triggers and fires a callback
+     * @returns: callback
+     */
+    DPKPOPUP.prototype.each = function(callback) {
+        var array = [];
+        array.forEach.call(this.triggers, function(element) {
             if (typeof callback === 'function') {
-                callback();
+                callback(element);
+            }
+        });
+    }
+
+    /**
+     * @public: closes modal if any is shown
+     */
+    DPKPOPUP.prototype.closeShownModal = function() {
+        var array = [];
+        var showModalClassName = this.settings.showModalClassName;
+        array.forEach.call(this.modalElements, function(element) {
+            if (element.classList.contains(showModalClassName)) {
+                element.classList.remove(showModalClassName);
+                return;
+            }
+        });
+    }
+
+    /**
+     * @private: short version of querySelectorAll
+     * @param: {string} selector - css-like
+     * @returns: {Array|NodeList} selector list
+     */
+    function docQSA(selector) {
+        return document.querySelectorAll(selector);
+    }
+
+    /**
+     * @private: short version of querySelector
+     * @param: css-like selector
+     * @returns: {Object} first DOM selector
+     */
+    function docQS(selector) {
+        return document.querySelector(selector);
+    }
+
+    /**
+     * @private: merge defaults with user options
+     * @param: defaults settings and user options
+     * @returns: merged values of defaults and options
+     */
+    function extend(defaults, options) {
+        var extended = {};
+        var prop;
+        for (prop in defaults) {
+            if (Object.prototype.hasOwnProperty.call(defaults, prop)) {
+                extended[prop] = defaults[prop];
             }
         }
+        for (prop in options) {
+            if (Object.prototype.hasOwnProperty.call(options, prop)) {
+                extended[prop] = options[prop];
+            }
+        }
+        return extended;
+    }
 
-        return DPKPOPUP;
-    })(window);
-});
+    /**
+     * @private: creates overlay element
+     * @param: callback - on finish
+     * @returns: callback
+     */
+    function setupOverlay(callback) {
+        var div = document.createElement('div');
+        div.classList.add('dpk-popup-modal-overlay');
+        docQS('body').appendChild(div);
+        if (typeof callback === 'function') {
+            callback();
+        }
+    }
+
+    return DPKPOPUP;
+})(window);
+
 
 

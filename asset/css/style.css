@@ -1,4 +1,10 @@
-.dpk-filter{
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.filter{
     font-family: 'Helvetica Neue', arial, sans-serif;
 }
 
@@ -13,7 +19,7 @@
     margin: 0 .4em 0 0;
 }
 
-.dpk-filter{
+.filter{
     display: inline-block;
     padding: .4em .8em;
     background: #76D691;
@@ -34,15 +40,15 @@
     border-radius: 4px;
 }
 
-.dpk-filter.active{
+.filter.active{
     background: #68b8c4;
 }
 
-.dpk-filter:focus{
+.filter:focus{
     outline: 0 none;
 }
 
-.dpk-filter + .dpk-label{
+.filter + .dpk-label{
     margin-left: 1em;
 }
 

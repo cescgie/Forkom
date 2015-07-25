@@ -32,7 +32,7 @@
 			
 			selectors: {
 				target: '.mix',
-				filter: '.dpk-filter',
+				filter: '.filter',
 				sort: '.sort'
 			},
 				
