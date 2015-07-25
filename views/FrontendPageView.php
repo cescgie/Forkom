@@ -57,6 +57,7 @@
 
     <div class="gap"></div>
     <div class="gap"></div>
+    </div>
 
     <div id="about-modal" class="dpk-popup-modal">
         <div class="dpk-popup-modal-header group">
@@ -80,7 +81,6 @@
                 <div id="tab-3">
                     <p>Mauris facilisis elit ut sem eleifend accumsan molestie sit amet dolor. Pellentesque dapibus arcu eu lorem laoreet, vitae cursus metus mattis. Nullam eget porta enim, eu rutrum magna. Duis quis tincidunt sem, sit amet faucibus magna. Integer commodo, turpis consequat fermentum egestas, leo odio posuere dui, elementum placerat eros erat id augue. Nullam at eros eget urna vestibulum malesuada vitae eu mauris. Aliquam interdum rhoncus velit, quis scelerisque leo viverra non. Suspendisse id feugiat dui. Nulla in aliquet leo. Proin vel magna sed est gravida rhoncus. Mauris lobortis condimentum nibh, vitae bibendum tortor vehicula ac. Curabitur posuere arcu eros.</p>
                 </div>
-
             </div>
         </div>
     </div>
