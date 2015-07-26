@@ -9,12 +9,33 @@ use DPK\Model\DPKEntity;
 
 class FrontendPageController extends Base
 {
+
     public function getAll(){
-        Connection::select();
-    }
+        $results = Connection::select();
+        $newResults = [];
+        $index = 0;
 
-    private function getRegional($city){
+        foreach($results as $result){
+            $pageInfo = []; $pageKegiatan = []; $pageMedia = []; $pageCP = [];
+            foreach($result as $key=>$value){
+                if($key == DPKEntity::KOTA_PENGAJIAN || $key == DPKEntity::NAMA_PENGAJIAN ||
+                   $key == DPKEntity::ALAMAT_PENGAJIAN || $key == DPKEntity::PLZ_PENGAJIAN ||
+                   $key == DPKEntity::CP_EMAIL){
+                    $pageInfo = array_merge($pageInfo, [$key => $value]);
+                } else if($key == DPKEntity::KEGIATAN_PENGAJIAN || $key == DPKEntity::NAMA_USTADZ_KOTA){
+                    $pageKegiatan = array_merge($pageKegiatan, [$key => $value]);
+                } else if($key == DPKEntity::URL_WEBSITE || $key == DPKEntity::URL_FACEBOOK_GROUP ||
+                          $key == DPKEntity::URL_TWITTER || $key == DPKEntity::URL_YOUTUBE_CHANNEL){
+                    $pageMedia = array_merge($pageMedia, [$key => $value]);
+                } else if($key == DPKEntity::CP_NAMA_LENGKAP || $key == DPKEntity::CP_EMAIL ||$key == DPKEntity::CP_TLPN) {
+                    $pageCP = array_merge($pageCP, [$key => $value]);
+                }
+            }
+            $newResults = array_merge($newResults, [$index => [$pageInfo, $pageKegiatan, $pageMedia, $pageCP]]);
+            $index++;
+        }
 
+        return $newResults;
     }
 
     public function registerCss(){

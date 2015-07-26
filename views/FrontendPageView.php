@@ -1,3 +1,11 @@
+<?php
+include_once( dirname(__DIR__) . '/models/DPKRegional.php' );
+include_once( dirname(__DIR__) . '/models/DPKEntity.php' );
+include_once( dirname(__DIR__) . '/controllers/FrontendPageController.php' );
+
+$controller = new \DPK\Controller\FrontendPageController();
+
+?>
 <div class="dpk-controls">
     <div style="margin-bottom: 15px;">
         <label class="dpk-label">Search</label>
@@ -8,61 +16,41 @@
         <label class="dpk-label">Filter:</label>
 
         <button class="filter" data-filter="all">All</button>
-        <button class="filter" data-filter=".jerman-barat">Jerman Barat</button>
-        <button class="filter" data-filter=".jerman-selatan">Jerman Selatan</button>
-        <button class="filter" data-filter=".jerman-timur">Jerman Timur</button>
-        <button class="filter" data-filter=".jerman-utara">Jerman Utara</button>
+        <button class="filter" data-filter=".<?= \DPK\Model\DPKRegional::REGION_1?>">Jerman Barat</button>
+        <button class="filter" data-filter=".<?= \DPK\Model\DPKRegional::REGION_2?>">Jerman Selatan</button>
+        <button class="filter" data-filter=".<?= \DPK\Model\DPKRegional::REGION_3?>">Jerman Timur</button>
+        <button class="filter" data-filter=".<?= \DPK\Model\DPKRegional::REGION_4?>">Jerman Utara</button>
     </div>
 
 </div>
 <div class="dpk-container">
-    <div class="mix jerman-timur">
-        <h1 class="pengajian_kota" >Berlin</h1>
-        <h3>IWKZ</h3>
-        <p>Feldzeugmeister 1, 10057 Berlin</p>
-        <p>info@iwkz.de</p>
-        <button display-detail="#about-modal" class="button">Show modal</button>
-    </div>
-    <div class="mix jerman-timur">
-        <h1 class="pengajian_kota">Brandenburg</h1>
-        <p>asdadadasd asdasda dasd asdas das qweoqwiep lkcxjyklcj qpweoiqwpoei yclkjlykxcj lqweiuqowe xcyc</p>
-    </div>
-    <div class="mix jerman-barat">
-        <h1 class="pengajian_kota">Frankfurt</h1>
-        <p>asdadadasd asdasda dasd asdas das qweoqwiep lkcxjyklcj qpweoiqwpoei yclkjlykxcj lqweiuqowe xcyc</p>
-    </div>
-    <div class="mix jerman-selatan">
-        <h1 class="pengajian_kota">München</h1>
-        <p>asdadadasd asdasda dasd asdas das qweoqwiep lkcxjyklcj qpweoiqwpoei yclkjlykxcj lqweiuqowe xcyc</p>
-    </div>
-    <div class="mix jerman-barat">
-        <h1 class="pengajian_kota">Karlsruhe</h1>
-        <p>asdadadasd asdasda dasd asdas das qweoqwiep lkcxjyklcj qpweoiqwpoei yclkjlykxcj lqweiuqowe xcyc</p>
-    </div>
-    <div class="mix jerman-selatan">
-        <h1 class="pengajian_kota">Bonn</h1>
-        <p>asdadadasd asdasda dasd asdas das qweoqwiep lkcxjyklcj qpweoiqwpoei yclkjlykxcj lqweiuqowe xcyc</p>
-    </div>
-    <div class="mix jerman-utara">
-        <h1 class="pengajian_kota">Bremen</h1>
-        <p>asdadadasd asdasda dasd asdas das qweoqwiep lkcxjyklcj qpweoiqwpoei yclkjlykxcj lqweiuqowe xcyc</p>
-    </div>
-    <div class="mix jerman-barat">
-        <h1 class="pengajian_kota">Köthen</h1>
-        <p>
-            Hello worald
-            <button display-detail="#about-modal" class="button">Show modal</button>
-        </p>
-    </div>
+    <?php
+    $getData = $controller->getAll();
+    foreach($getData as $results){
+        ?>
+        <div class="mix <?= \DPK\Model\DPKRegional::getRegional($results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]);?>">
+            <h5 class="pengajian_kota"><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></h5>
+            <h5><?= $results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]; ?></h5>
+            <p><?= $results[0][\DPK\Model\DPKEntity::ALAMAT_PENGAJIAN].', '.
+                $results[0][\DPK\Model\DPKEntity::PLZ_PENGAJIAN].' '.
+                $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></p>
+            <p><?= $results[0][\DPK\Model\DPKEntity::CP_EMAIL]; ?></p>
+            <button display-detail="#detail<?= strtolower($results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]);?>"
+                    class="button">Show Detail</button>
+        </div>
+        <?php
+    }
+    ?>
 
     <div class="gap"></div>
     <div class="gap"></div>
-    </div>
-
-    <div id="about-modal" class="dpk-popup-modal">
+</div>
+<?php
+foreach ($getData as $results) {
+    ?>
+    <div id="detail<?= strtolower($results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]);?>" class="dpk-popup-modal">
         <div class="dpk-popup-modal-header group">
-            <button class="dpk-popup-modal-close"><span class="text">×</span></button>
-            <h2 class="dpk-popup-modal-title">About</h2>
+            <button class="dpk-popup-modal-close"><span class="text">&times;</span></button>
         </div>
         <div class="dpk-popup-modal-body">
             <div id="horizontalTab">
@@ -84,3 +72,7 @@
             </div>
         </div>
     </div>
+    <?php
+}
+
+?>
