@@ -35,7 +35,10 @@ $controller = new \DPK\Controller\FrontendPageController();
                 $results[0][\DPK\Model\DPKEntity::PLZ_PENGAJIAN].' '.
                 $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></p>
             <p><?= $results[0][\DPK\Model\DPKEntity::CP_EMAIL]; ?></p>
-            <button display-detail="#detail<?= strtolower($results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]);?>"
+            <button display-detail="#show-detail<?= strtolower($results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]);?>"
+                    tab-1=""
+                    tab-2=""
+                    tab-3=""
                     class="button">Show Detail</button>
         </div>
         <?php
@@ -45,34 +48,21 @@ $controller = new \DPK\Controller\FrontendPageController();
     <div class="gap"></div>
     <div class="gap"></div>
 </div>
-<?php
-foreach ($getData as $results) {
-    ?>
-    <div id="detail<?= strtolower($results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]);?>" class="dpk-popup-modal">
-        <div class="dpk-popup-modal-header group">
-            <button class="dpk-popup-modal-close"><span class="text">&times;</span></button>
-        </div>
-        <div class="dpk-popup-modal-body">
-            <div id="horizontalTab">
-                <ul>
-                    <li><a href="#tab-1">Kegiatan</a></li>
-                    <li><a href="#tab-2">Media</a></li>
-                    <li><a href="#tab-3">Contact Person</a></li>
-                </ul>
+<div id="show-detail" class="dpk-popup-modal">
+    <div class="dpk-popup-modal-header group">
+        <button class="dpk-popup-modal-close"><span class="text">&times;</span></button>
+    </div>
+    <div class="dpk-popup-modal-body">
+        <div id="horizontalTab">
+            <ul>
+                <li><a href="#tab-1">Kegiatan</a></li>
+                <li><a href="#tab-2">Media</a></li>
+                <li><a href="#tab-3">Contact Person</a></li>
+            </ul>
 
-                <div id="tab-1">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu scelerisque eros. Fusce ante orci, hendrerit sit amet metus sit amet, venenatis sodales felis. Morbi vel mi in leo dignissim convallis in a neque. Suspendisse sollicitudin nibh non dapibus condimentum. Etiam sit amet arcu ultricies, porttitor justo eget, scelerisque urna. Praesent non ligula nec ligula euismod condimentum eget sed augue. Ut feugiat, turpis id sollicitudin vestibulum, tellus massa adipiscing nisl, quis cursus nisl arcu vel ipsum.</p>
-                </div>
-                <div id="tab-2">
-                    <p>Quisque sodales sodales lacus pharetra bibendum. Etiam commodo non velit ac rhoncus. Mauris euismod purus sem, ac adipiscing quam laoreet et. Praesent vulputate ornare sem vel scelerisque. Ut dictum augue non erat lacinia, sed lobortis elit gravida. Proin ante massa, ornare accumsan ultricies et, posuere sit amet magna. Praesent dignissim, enim sed malesuada luctus, arcu sapien sodales sapien, ut placerat eros nunc vel est. Donec tristique mi turpis, et sodales nibh gravida eu. Etiam odio risus, porttitor non lacus id, rhoncus tempus tortor. Curabitur tincidunt molestie turpis, ut luctus nibh sollicitudin vel. Sed vel luctus nisi, at mattis metus. Aenean ultricies dolor est, a congue ante dapibus varius. Nulla at auctor nunc. Curabitur accumsan feugiat felis ut pretium. Praesent semper semper nisi, eu cursus augue.</p>
-                </div>
-                <div id="tab-3">
-                    <p>Mauris facilisis elit ut sem eleifend accumsan molestie sit amet dolor. Pellentesque dapibus arcu eu lorem laoreet, vitae cursus metus mattis. Nullam eget porta enim, eu rutrum magna. Duis quis tincidunt sem, sit amet faucibus magna. Integer commodo, turpis consequat fermentum egestas, leo odio posuere dui, elementum placerat eros erat id augue. Nullam at eros eget urna vestibulum malesuada vitae eu mauris. Aliquam interdum rhoncus velit, quis scelerisque leo viverra non. Suspendisse id feugiat dui. Nulla in aliquet leo. Proin vel magna sed est gravida rhoncus. Mauris lobortis condimentum nibh, vitae bibendum tortor vehicula ac. Curabitur posuere arcu eros.</p>
-                </div>
-            </div>
+            <div id="tab-1"> </div>
+            <div id="tab-2"></div>
+            <div id="tab-3"></div>
         </div>
     </div>
-    <?php
-}
-
-?>
+</div>

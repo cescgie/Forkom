@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         element.addEventListener('click', function(event) {
+            var tab1 = element.getAttribute('tab-1');
+            var tab2 = element.getAttribute('tab-2');
+            var tab3 = element.getAttribute('tab-3');
+
+            $("#tab-1").append("<p>"+tab1+"</p>");
+            $("#tab-2").append("<p>"+tab2+"</p>");
+            $("#tab-3").append("<p>"+tab3+"</p>");
+
             event.preventDefault();
             modal.open(targetElement);
         });
