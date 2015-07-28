@@ -35,10 +35,10 @@ $controller = new \DPK\Controller\FrontendPageController();
                 $results[0][\DPK\Model\DPKEntity::PLZ_PENGAJIAN].' '.
                 $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></p>
             <p><?= $results[0][\DPK\Model\DPKEntity::CP_EMAIL]; ?></p>
-            <button display-detail="#show-detail<?= strtolower($results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]);?>"
-                    tab-1=""
-                    tab-2=""
-                    tab-3=""
+            <button display-detail="#show-detail"
+                    tab-1="<?= $results[1]?>"
+                    tab-2="<?= $results[2]?>"
+                    tab-3="<?= $results[3]?>"
                     class="button">Show Detail</button>
         </div>
         <?php

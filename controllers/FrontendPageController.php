@@ -27,7 +27,8 @@ class FrontendPageController extends Base
                 } else if($key == DPKEntity::URL_WEBSITE || $key == DPKEntity::URL_FACEBOOK_GROUP ||
                           $key == DPKEntity::URL_TWITTER || $key == DPKEntity::URL_YOUTUBE_CHANNEL){
                     $pageMedia = array_merge($pageMedia, [$key => $value]);
-                } else if($key == DPKEntity::CP_NAMA_LENGKAP || $key == DPKEntity::CP_EMAIL ||$key == DPKEntity::CP_TLPN) {
+                } else if($key == DPKEntity::CP_NAMA_LENGKAP || $key == DPKEntity::CP_EMAIL ||
+                          $key == DPKEntity::CP_TLPN) {
                     $pageCP = array_merge($pageCP, [$key => $value]);
                 }
             }
@@ -35,7 +36,25 @@ class FrontendPageController extends Base
             $index++;
         }
 
+        $newResults = $this->mergeEntitiy($newResults, 1);
+        $newResults = $this->mergeEntitiy($newResults, 2);
+        $newResults = $this->mergeEntitiy($newResults, 3);
+
         return $newResults;
+    }
+
+    private function mergeEntitiy($arrEntity, $tabId){
+        $index = 0;
+
+        foreach($arrEntity as $entity){
+            $tmp = "";
+            foreach($entity[$tabId] as $value){
+                $tmp .= $value. '?';
+            }
+            $arrEntity[$index][$tabId] = $tmp;
+            $index++;
+        }
+        return $arrEntity;
     }
 
     public function registerCss(){
