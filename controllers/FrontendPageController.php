@@ -60,9 +60,11 @@ class FrontendPageController extends Base
     public function registerCss(){
         wp_register_style( 'dpk-styles', $this->getUrl('asset').'css/style.css' );
         wp_register_style( 'dpk-tabs-popup', $this->getUrl('asset').'css/dpk-tabs-popup.css' );
+        wp_register_style( 'dpk-testt', $this->getUrl('asset').'css/test.css' );
 
         wp_enqueue_style( 'dpk-styles' );
         wp_enqueue_style( 'dpk-tabs-popup' );
+        wp_enqueue_style( 'dpk-testt' );
     }
 
     public function registerScript(){

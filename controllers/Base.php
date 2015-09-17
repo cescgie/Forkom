@@ -25,7 +25,8 @@ class Base
 		'model'      => 'models',
 		'view'       => 'views',
 		'asset'      => 'asset',
-		'admin_page' => 'views/admin-page'
+        'cp-page'    => 'views/cp-page',
+		'admin-page' => 'views/admin-page'
 	);
 
 	/**

@@ -28,9 +28,9 @@ $arrValues = $controller->getRequest($_GET['tab']);
 
         <form name="forms" method="POST" action="">
             <?php
-            $path = $controller->getPath('admin_page') . 'InfoPengajianKota.php';
+            $path = $controller->getPath('cp-page') . 'InfoPengajianKota.php';
             if($tab == \DPK\Model\DPKEntity::TAB_CP_MEDKOM){
-                $path = $controller->getPath('admin_page') . 'ContactMediaPublikasi.php';
+                $path = $controller->getPath('cp-page') . 'ContactMediaPublikasi.php';
             }
             include_once($path);
             ?>

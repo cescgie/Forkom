@@ -1,5 +1,5 @@
 <?php
-include_once( dirname(__DIR__) . '/../models/DPKEntity.php' );
+include_once(dirname(__DIR__) . '/../models/DPKEntity.php');
 ?>
 <div>
     <h3>Contact Person</h3>

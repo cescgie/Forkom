@@ -28,18 +28,30 @@ $controller = new \DPK\Controller\FrontendPageController();
     $getData = $controller->getAll();
     foreach($getData as $results){
         ?>
-        <div class="mix <?= \DPK\Model\DPKRegional::getRegional($results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]);?>">
-            <h5 class="pengajian_kota"><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></h5>
-            <h5><?= $results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]; ?></h5>
-            <p><?= $results[0][\DPK\Model\DPKEntity::ALAMAT_PENGAJIAN].', '.
-                $results[0][\DPK\Model\DPKEntity::PLZ_PENGAJIAN].' '.
-                $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></p>
-            <p><?= $results[0][\DPK\Model\DPKEntity::CP_EMAIL]; ?></p>
-            <button display-detail="#show-detail"
+        <div class="mix personal <?= \DPK\Model\DPKRegional::getRegional($results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]);?>">
+            <h2 class="title"><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></h2>
+            <div class="content">
+                <p class="price"
+                    <span><?= $results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]; ?></span>
+                    <sub><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></sub>
+                </p>
+                <p class="hint"><?= $results[0][\DPK\Model\DPKEntity::CP_EMAIL]; ?></p>
+            </div>
+            <ul class="features">
+                <li><span class="fontawesome-star"><?= $results[0][\DPK\Model\DPKEntity::ALAMAT_PENGAJIAN]; ?></span></li>
+                <li><span class="fontawesome-star"><?= $results[0][\DPK\Model\DPKEntity::PLZ_PENGAJIAN]; ?></span></li>
+                <li><span class="fontawesome-star"><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></span></li>
+            </ul>
+
+            <div class="pt-footer">
+                    <button display-detail="#show-detail"
                     tab-1="<?= $results[1]?>"
                     tab-2="<?= $results[2]?>"
                     tab-3="<?= $results[3]?>"
                     class="button">Show Detail</button>
+            </div>
+
+            
         </div>
         <?php
     }
