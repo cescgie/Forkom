@@ -1,6 +1,3 @@
-/*
-Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pricing-Table?list=tags&tag=pricing_table
-*/
 
 /*--------- Font ------------*/
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
@@ -46,19 +43,20 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 /*    border: 1px solid red;*/
 }
 /*Shared properties*/
-.title,.pt-footer{
+.dpk-front-title,.dpk-front-footer{
     color: #FEFEFE;
     text-transform: capitalize;
     line-height: 2.5;
     position: relative;
+    margin-bottom: 1px;
 }
-.content{
+.dpk-front-content{
     position: relative;
-    color: #FEFEFE;
+    color: #FFF;
     padding: 20px 0 10px 0;
 }
 /*arrow creation*/
-.content:after, .content:before,.pt-footer:before,.pt-footer:after {
+.dpk-front-content:after, .dpk-front-content:before,.dpk-front-footer:before,.dpk-front-footer:after {
 	top: 100%;
 	left: 50%;
 	border: solid transparent;
@@ -68,21 +66,21 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 	position: absolute;
 	pointer-events: none;
 }
-.pt-footer:after,.pt-footer:before{
+.dpk-front-footer:after,.dpk-front-footer:before{
     top:0;
 }
-.content:after,.pt-footer:after {
+.dpk-front-content:after,.dpk-front-footer:after {
 	border-color: rgba(136, 183, 213, 0);	
 	border-width: 5px;
 	margin-left: -5px;
 }
 /*/arrow creation*/
-.price{
+.dpk-front-kota{
     position: relative;
     display: inline-block;
     margin-bottom: 0.625rem;
 }
-.price span{    
+.dpk-front-kota span{    
     font-size: 6rem;
     letter-spacing: 8px;
     font-weight: bold;        
@@ -91,35 +89,36 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     font-style: italic;
     font-size: 0.9rem;
 }
-.features{
+.dpk-front-media{
     list-style-type: none;    
     background: #FFFFFF;
     text-align: left;
     color: #9C9C9C;
-    padding:30px 22%;
+    padding:25px;
     font-size: 0.9rem;
 }
-.features li{
+.dpk-front-media li{
     padding:15px 0;
     width: 100%;
 }
-.features li span{
+.dpk-front-media li span{
    padding-right: 0.4rem; 
 }
-.pt-footer{
+.dpk-front-footer{
     font-size: 0.95rem;
     text-transform: capitalize;
+    width: 100%;
 }
 /*PERSONAL*/
-.personal .title{        
+.personal .dpk-front-title{        
     background: #78CFBF;    
 }
-.personal .content,.personal .pt-footer{
+.personal .dpk-front-content,.personal .dpk-front-footer{
     background: #82DACA;
 }
-.personal .content:after{	
+.personal .dpk-front-content:after{	
 	border-top-color: #82DACA;	
 }
-.personal .pt-footer:after{
+.personal .dpk-front-footer:after{
     border-top-color: #FFFFFF;
 }

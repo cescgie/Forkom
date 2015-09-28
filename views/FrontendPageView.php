@@ -27,29 +27,39 @@ $controller = new \DPK\Controller\FrontendPageController();
     <?php
     $getData = $controller->getAll();
     foreach($getData as $results){
+        $URL = explode("?", $results[2]);
         ?>
-        <div class="mix personal <?= \DPK\Model\DPKRegional::getRegional($results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]);?>">
-            <h2 class="title"><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></h2>
-            <div class="content">
-                <p class="price"
-                    <span><?= $results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]; ?></span>
-                    <sub><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></sub>
-                </p>
-                <p class="hint"><?= $results[0][\DPK\Model\DPKEntity::CP_EMAIL]; ?></p>
+        <div class="mix block personal fl <?= \DPK\Model\DPKRegional::getRegional($results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]);?>">
+            <h2 class="dpk-front-title"><?= $results[0][\DPK\Model\DPKEntity::NAMA_PENGAJIAN]; ?></h2>
+            <div class="dpk-front-content">
+                <h3 class="dpk-front-kota" style="font-weight:bold;"
+                    <span><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></span>
+                </h3>
+                <p class="hint"><?= $results[0][\DPK\Model\DPKEntity::ALAMAT_PENGAJIAN]; ?>, <?= $results[0][\DPK\Model\DPKEntity::PLZ_PENGAJIAN]; ?> <?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></p>
             </div>
-            <ul class="features">
-                <li><span class="fontawesome-star"><?= $results[0][\DPK\Model\DPKEntity::ALAMAT_PENGAJIAN]; ?></span></li>
-                <li><span class="fontawesome-star"><?= $results[0][\DPK\Model\DPKEntity::PLZ_PENGAJIAN]; ?></span></li>
-                <li><span class="fontawesome-star"><?= $results[0][\DPK\Model\DPKEntity::KOTA_PENGAJIAN]; ?></span></li>
+            <ul class="dpk-front-media">
+                <?php if($URL[0] != ""){ ?>
+                    <li><span class="fontawesome-home"> <?= $URL[0]; ?></span></li>
+                <?php }?>
+                <?php if($results[0][\DPK\Model\DPKEntity::CP_EMAIL] != ""){ ?>
+                    <li><span class="fontawesome-envelope"> <?= $results[0][\DPK\Model\DPKEntity::CP_EMAIL]; ?></span></li>
+                <?php }?>
+                <?php if($URL[1] != ""){ ?>
+                    <li><span class="fontawesome-facebook"> <?= $URL[1]; ?></span></li>
+                <?php }?>
+                <?php if($URL[2] != ""){ ?>
+                    <li><span class="fontawesome-twitter"> <?= $URL[2]; ?></span></li>
+                <?php }?>
+                <?php if($URL[3] != "-"){ ?>
+                    <li><span class="fontawesome-video-camera"> <?= $URL[3]; ?></span></li>
+                <?php }?> 
             </ul>
 
-            <div class="pt-footer">
-                    <button display-detail="#show-detail"
+            <button display-detail="#show-detail"
                     tab-1="<?= $results[1]?>"
                     tab-2="<?= $results[2]?>"
                     tab-3="<?= $results[3]?>"
-                    class="button">Show Detail</button>
-            </div>
+                    class="button dpk-front-footer">Show Detail</button>
 
             
         </div>

@@ -10,7 +10,7 @@
 
 .dpk-controls{
     padding: 2%;
-    background: #308a4f;
+    background: #4db2ec;
     color: #eee;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .filter.active{
-    background: #68b8c4;
+    background: #0053bf;
 }
 
 .filter:focus{
@@ -74,9 +74,9 @@
 
 .dpk-container .mix{
     text-align: center;
-    background: #76D691;
+    /*background: #76D691;
     margin-bottom: 2%;
-    padding: 15px;
+    padding: 15px;*/
     display: none;
     font-size: 14px;
     vertical-align: top;
@@ -111,4 +111,9 @@
 
 .pengajian_kota{
     text-decoration: underline;
+}
+
+.mix {
+
+    min-width: 210px;
 }
