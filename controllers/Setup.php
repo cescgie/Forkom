@@ -24,8 +24,9 @@ class Setup extends Base {
 
     public function dpkAddMenu(){
         $adminController = new AdminPageController();
+        $user = wp_get_current_user();
 
-        if($this->checkUserLogin('pengajian_kota')){
+        if($user->roles[0] == 'pengajian-kota'){
             add_menu_page(
                 'Info Pengajian Kota',
                 'Info Pengajian Kota',
