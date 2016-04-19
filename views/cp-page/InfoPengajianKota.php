@@ -76,7 +76,7 @@ include_once(dirname(__DIR__) . '/../models/DPKEntity.php');
 </div>
 <div>
     <h3>Rekomendasi Ustadz Pengajian Kota</h3>
-    <button class="add_ustadz">Tambah Kegiatan</button>
+    <button class="add_ustadz">Tambah Nama Ustadz</button>
     <table class="input_fields_nama_ustadz">
         <?php
         $indexUstadz = 1;
